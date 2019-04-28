@@ -1,9 +1,14 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 const path = require('path');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-    mode: 'production',
+    mode: isDevelopment ? 'development' : 'production',
     output: {
-       filename: '[name].js',
+       filename: isDevelopment ? '[name].js' : '[name].[hash].js',
        path:  path.resolve(__dirname, 'dist')
     },
     entry: path.resolve(__dirname, 'src') + '/index.js',
@@ -12,7 +17,22 @@ module.exports = {
             {
                 test: /\.js?$/,
                 loader: 'babel-loader'
+            },
+            {
+                test:/\.html?$/,
+                loader: 'html-loader'
             }
         ]
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src') + '/index.html',
+            filename: './index.html'
+        }),
+    ],
+    devServer: {
+        host: '0.0.0.0',
+        port: '3001'
     }
 };

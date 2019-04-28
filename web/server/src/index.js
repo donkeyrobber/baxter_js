@@ -1,9 +1,6 @@
-const Koa = require('koa', '2.7.0');
+const Koa = require('koa');
 
 const app = new Koa();
-
-app.use(async ctx =>{
-    ctx.body = 'Hello World';
-});
+require('./server')(app);
 
 app.listen(3000);
