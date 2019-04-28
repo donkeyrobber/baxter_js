@@ -1,0 +1,17 @@
+version: "2"
+services:
+  node:
+    build:
+      context: node
+    volumes:
+      - ./node:/usr/src
+    ports:
+      - 3000:3000
+    command: "npm start"
+  nginx:
+    build:
+      context: nginx
+    ports:
+      - 80:80
+
+
