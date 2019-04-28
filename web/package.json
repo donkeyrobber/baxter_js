@@ -5,8 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/src/index.js",
-    "client:build": "NODE_ENV=production webpack --config client/webpack.config.js",
-    "client:start": "NODE_ENV=development webpack-dev-server --config client/webpack.config.js"
+    "client:build": "NODE_ENV=production webpack --config webpack.config.js",
+    "client:start": "NODE_ENV=development webpack-dev-server --config webpack.config.js"
   },
   "keywords": [],
   "author": "",

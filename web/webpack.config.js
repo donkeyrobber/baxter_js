@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const path = require('path');
 
+const clientBaseDir = path.join(__dirname, 'client');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
        filename: isDevelopment ? '[name].js' : '[name].[hash].js',
        path:  path.resolve(__dirname, 'dist')
     },
-    entry: path.resolve(__dirname, 'src') + '/index.js',
+    entry: path.join(clientBaseDir, 'src', 'index.js'),
     module: {
         rules: [
             {
@@ -27,7 +28,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src') + '/index.html',
+            template: path.join(clientBaseDir, 'src', 'index.html'),
             filename: './index.html'
         }),
     ],
