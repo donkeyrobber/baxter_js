@@ -2,9 +2,9 @@ version: "2"
 services:
   node:
     build:
-      context: node
+      context: web
     volumes:
-      - ./node:/usr/src
+      - ./web:/usr/src
     ports:
       - 3000:3000
     command: "npm start"
