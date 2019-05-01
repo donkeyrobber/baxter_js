@@ -10,9 +10,10 @@ module.exports = {
     mode: isDevelopment ? 'development' : 'production',
     output: {
        filename: isDevelopment ? '[name].js' : '[name].[hash].js',
-       path:  path.resolve(__dirname, 'dist')
+       path:  path.resolve(__dirname, 'dist'),
+       publicPath: '/'
     },
-    entry: path.join(clientBaseDir, 'src', 'index.js'),
+    entry: {'main': [path.join(clientBaseDir, 'src', 'index.js')]},
     module: {
         rules: [
             {

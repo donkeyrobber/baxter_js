@@ -15,9 +15,10 @@
     "babel-loader": "^8.0.5",
     "koa": "^2.7.0",
     "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
-    "koa-router": "^7.4.0"
+    "koa-webpack": "^5.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
