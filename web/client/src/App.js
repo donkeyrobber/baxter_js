@@ -1,12 +1,14 @@
+import { hot } from 'react-hot-loader/root';
 import React, {Component} from 'react';
-
+import  SignUp  from './components/sign-up'
 class App extends Component {
     render() {
         return (
-            <h1> hello!</h1>
+            <SignUp/>
+
         );
     }
 
 }
 
-export default App;
+export default hot(App);
