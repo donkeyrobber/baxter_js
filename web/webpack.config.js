@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
 
@@ -23,6 +24,19 @@ module.exports = {
             {
                 test:/\.html?$/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.s(a|c)ss$/,
+                loader: [
+                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: isDevelopment
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -32,6 +46,10 @@ module.exports = {
             template: path.join(clientBaseDir, 'src', 'index.html'),
             filename: './index.html'
         }),
+        new MiniCssExtractPlugin({
+            filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+            chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+        })
     ],
     devServer: {
         host: '0.0.0.0',
